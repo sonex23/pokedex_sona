@@ -1,0 +1,1 @@
+enum SortBy { number, name }
