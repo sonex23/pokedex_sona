@@ -262,6 +262,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.19"
+  flutter_popup_card:
+    dependency: "direct main"
+    description:
+      name: flutter_popup_card
+      sha256: "0f3ad7963e7c38e0d97b430901220f0729a251945b83ddeb77b303ea53c7deff"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   flutter_test:
     dependency: "direct dev"
     description: flutter

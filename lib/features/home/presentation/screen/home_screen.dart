@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_popup_card/flutter_popup_card.dart';
 import 'package:pokedex_sona/ui/images/images.dart';
 import 'package:pokedex_sona/ui/palette/palette.dart';
 
@@ -83,15 +84,59 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 16),
-                    width: 32,
-                    height: 32,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Palette.white,
+                  GestureDetector(
+                    onTap: () {
+                      showPopupCard(
+                          context: context,
+                          builder: (context) {
+                            return PopupCard(
+                              elevation: 8,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              color: Palette.red,
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 16),
+                                      child: Text(
+                                        "Sort by:",
+                                        style: TextStyle(
+                                          color: Palette.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(color: Palette.white, borderRadius: BorderRadius.circular(12)),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          useSafeArea: true,
+                          alignment: Alignment.topRight,
+                          offset: const Offset(-16, 100));
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 16),
+                      width: 32,
+                      height: 32,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Palette.white,
+                      ),
+                      child: Image.asset(Images.tag),
                     ),
-                    child: Image.asset(Images.tag),
                   )
                 ],
               ),
