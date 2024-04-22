@@ -7,7 +7,7 @@ class NetworkClient {
   NetworkClient(this._dio, {required this.url}) {
     _dio.options = BaseOptions(
       contentType: 'application/json',
-      baseUrl: url.base_url,
+      baseUrl: url.baseUrl,
     );
   }
 

@@ -5,6 +5,25 @@ extension StringExtension on String {
   String capitalizeFirstLetter() {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
+
+  String toShortStat() {
+    switch (this) {
+      case "hp":
+        return "HP";
+      case "attack":
+        return "ATK";
+      case "defense":
+        return "DEF";
+      case "special-attack":
+        return "SATK";
+      case "special-defense":
+        return "SDEF";
+      case "speed":
+        return "SPD";
+      default:
+        return "";
+    }
+  }
 }
 
 extension IntExtention on int {

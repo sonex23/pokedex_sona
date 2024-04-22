@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'list_pokemon_entity.freezed.dart';
 part 'list_pokemon_entity.g.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokedex_sona/features/detail/presentation/screen/pokemon_detail_screen.dart';
 import 'package:pokedex_sona/features/home/presentation/view_param/list_pokemon_view_param.dart';
 import 'package:pokedex_sona/misc/constant/router_constant.dart';
 import 'package:pokedex_sona/misc/helper/helper.dart';
@@ -7,9 +8,11 @@ import 'package:pokedex_sona/ui/palette/palette.dart';
 
 class CardPokemon extends StatelessWidget {
   final ListPokemonViewParam pokemonViewParam;
+  final int indexList;
   const CardPokemon({
     super.key,
     required this.pokemonViewParam,
+    required this.indexList,
   });
 
   @override
@@ -17,7 +20,10 @@ class CardPokemon extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.pushNamed(
         RouterConstant.detailRouteName,
-        extra: pokemonViewParam,
+        extra: PokemonDetailScreenParam(
+          listPokemonViewParam: pokemonViewParam,
+          indexList: indexList,
+        ),
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -40,7 +46,7 @@ class CardPokemon extends StatelessWidget {
                 child: Container(
                   height: 44,
                   decoration: BoxDecoration(
-                    color: Palette.grey_background,
+                    color: Palette.greyBackground,
                     borderRadius: BorderRadius.circular(7),
                   ),
                 ),
@@ -59,7 +65,7 @@ class CardPokemon extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 8,
                           fontWeight: FontWeight.w400,
-                          color: Palette.grey_medium,
+                          color: Palette.greyMedium,
                         ),
                       ),
                     ),

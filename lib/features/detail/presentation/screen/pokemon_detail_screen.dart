@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/web.dart';
 import 'package:pokedex_sona/features/detail/presentation/cubit/pokemon_detail_cubit.dart';
+import 'package:pokedex_sona/features/home/presentation/cubit/list_pokemon_cubit.dart';
 import 'package:pokedex_sona/features/home/presentation/view_param/list_pokemon_view_param.dart';
 import 'package:pokedex_sona/misc/helper/helper.dart';
 import 'package:pokedex_sona/ui/images/images.dart';
 import 'package:pokedex_sona/ui/palette/palette.dart';
 
+class PokemonDetailScreenParam {
+  final ListPokemonViewParam listPokemonViewParam;
+  final int indexList;
+  const PokemonDetailScreenParam({
+    required this.listPokemonViewParam,
+    required this.indexList,
+  });
+}
+
 class PokemonDetailScreen extends StatefulWidget {
-  final ListPokemonViewParam param;
+  final PokemonDetailScreenParam param;
   const PokemonDetailScreen({
     super.key,
     required this.param,
@@ -19,10 +28,13 @@ class PokemonDetailScreen extends StatefulWidget {
 }
 
 class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
+  late int indexList;
+
   @override
   void initState() {
     super.initState();
-    context.read<PokemonDetailCubit>().getPokemonDetail(id: widget.param.id);
+    context.read<PokemonDetailCubit>().getPokemonDetail(id: widget.param.listPokemonViewParam.id);
+    indexList = widget.param.indexList;
   }
 
   @override
@@ -37,7 +49,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
             foregroundColor: Palette.white,
             forceMaterialTransparency: true,
             title: Text(
-              widget.param.name,
+              state.pokemonDetail?.name ?? "",
               style: const TextStyle(
                 color: Palette.white,
                 fontSize: 24,
@@ -46,7 +58,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
             ),
             actions: [
               Text(
-                widget.param.id.toId(),
+                state.pokemonDetail?.id.toId() ?? '#000',
                 style: const TextStyle(
                   color: Palette.white,
                   fontSize: 12,
@@ -143,10 +155,10 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                                         decoration: const BoxDecoration(
                                           border: Border(
                                             right: BorderSide(
-                                              color: Palette.grey_light,
+                                              color: Palette.greyLight,
                                             ),
                                             left: BorderSide(
-                                              color: Palette.grey_light,
+                                              color: Palette.greyLight,
                                             ),
                                           ),
                                         ),
@@ -222,22 +234,24 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                                     margin: const EdgeInsets.only(right: 12),
                                     decoration: const BoxDecoration(
                                       border: Border(
-                                        right: BorderSide(color: Palette.grey_light),
+                                        right: BorderSide(color: Palette.greyLight),
                                       ),
                                     ),
                                     child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: List.generate(state.pokemonDetail?.stats.length ?? 0, (index) {
                                         return Padding(
                                           padding: const EdgeInsets.symmetric(
                                             vertical: 3,
                                           ),
                                           child: Text(
-                                            state.pokemonDetail?.stats[index].name ?? '',
+                                            state.pokemonDetail?.stats[index].name.toShortStat() ?? '',
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.w700,
                                               color: state.pokemonDetail?.types[0].color ?? Palette.black,
                                             ),
+                                            textAlign: TextAlign.right,
                                           ),
                                         );
                                       }),
@@ -292,9 +306,22 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.arrow_back_ios_rounded,
-                        color: Palette.white,
+                      Visibility(
+                        visible: state.pokemonDetail?.id != context.read<ListPokemonCubit>().listPokemon[0].id,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (state.pokemonDetail?.id != null) {
+                              setState(() {
+                                indexList--;
+                              });
+                              context.read<PokemonDetailCubit>().getPokemonDetail(id: context.read<ListPokemonCubit>().listPokemon[indexList].id);
+                            }
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_ios_rounded,
+                            color: Palette.white,
+                          ),
+                        ),
                       ),
                       LayoutBuilder(builder: (context, contstraints) {
                         if (state.isLoadingState) {
@@ -305,9 +332,23 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                           width: MediaQuery.of(context).size.width * 0.6,
                         );
                       }),
-                      Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: Palette.white,
+                      Visibility(
+                        visible: state.pokemonDetail?.id !=
+                            context.read<ListPokemonCubit>().listPokemon[context.read<ListPokemonCubit>().listPokemon.length - 1].id,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (state.pokemonDetail?.id != null) {
+                              setState(() {
+                                indexList++;
+                              });
+                              context.read<PokemonDetailCubit>().getPokemonDetail(id: context.read<ListPokemonCubit>().listPokemon[indexList].id);
+                            }
+                          },
+                          child: const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Palette.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -335,7 +376,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
         Text(
           title,
           style: const TextStyle(
-            color: Palette.grey_medium,
+            color: Palette.greyMedium,
             fontWeight: FontWeight.w400,
             fontSize: 8,
           ),

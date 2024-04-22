@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:logger/web.dart';
 import 'package:pokedex_sona/core/network/result.dart';
 import 'package:pokedex_sona/features/detail/data/api/pokemon_detail_client.dart';
 import 'package:pokedex_sona/features/detail/domain/entity/pokemon_detail_entity.dart';

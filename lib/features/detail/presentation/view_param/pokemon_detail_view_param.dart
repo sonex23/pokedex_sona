@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pokedex_sona/features/detail/domain/entity/pokemon_detail_entity.dart';
 import 'package:pokedex_sona/misc/helper/helper.dart';
-import 'package:intl/intl.dart';
 
 part 'pokemon_detail_view_param.freezed.dart';
 

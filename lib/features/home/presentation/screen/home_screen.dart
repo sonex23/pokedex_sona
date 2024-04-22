@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_popup_card/flutter_popup_card.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:go_router/go_router.dart';
 import 'package:logger/web.dart';
 import 'package:pokedex_sona/features/home/presentation/cubit/list_pokemon_cubit.dart';
 import 'package:pokedex_sona/features/home/presentation/view_param/list_pokemon_view_param.dart';
@@ -24,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   SortBy? sortBy = SortBy.number;
   int offset = 0;
   int limit = 8;
-  ScrollController _scrollController = ScrollController();
-  TextEditingController _searchController = TextEditingController();
+  ScrollController scrollController = ScrollController();
+  TextEditingController searchController = TextEditingController();
   bool hasNextPage = true;
   bool isLoadNextPage = false;
   bool isFirstLoad = true;
@@ -62,8 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _getListPokemon(offset: offset);
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
         setState(() {
           offset += 8;
           if (hasNextPage) {
@@ -151,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
             } else if (isSearch) {
               return GridView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  // controller: _scrollController,
+                  // controller: scrollController,
                   shrinkWrap: true,
                   clipBehavior: Clip.none,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -164,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     return CardPokemon(
                       pokemonViewParam: _listPokemonSearch[index],
+                      indexList: index,
                     );
                   });
             } else {
@@ -172,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: GridView.builder(
                         physics: const AlwaysScrollableScrollPhysics(),
-                        controller: _scrollController,
+                        controller: scrollController,
                         shrinkWrap: true,
                         clipBehavior: Clip.none,
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -185,6 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return CardPokemon(
                             pokemonViewParam: listPokemonCubit.listPokemon[index],
+                            indexList: index,
                           );
                         }),
                   ),
@@ -215,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Expanded(
             child: TextFormField(
-              controller: _searchController,
+              controller: searchController,
               onChanged: (value) {
                 _searchPokemon(value);
               },
@@ -243,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 hintStyle: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
-                  color: Palette.grey_medium,
+                  color: Palette.greyMedium,
                 ),
                 contentPadding: const EdgeInsets.all(8),
                 isDense: true,
@@ -372,6 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.topRight,
                   offset: const Offset(-16, 100));
               if (isSortedBy != null) {
+                // ignore: use_build_context_synchronously
                 context.read<ListPokemonCubit>().sortListPokemon(sortBy!);
                 setState(() {});
               }
