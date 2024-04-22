@@ -1,31 +1,24 @@
 import 'package:dio/dio.dart';
+import 'package:logger/web.dart';
 import 'package:pokedex_sona/core/network/result.dart';
-import 'package:pokedex_sona/features/home/data/api/list_pokemon_client.dart';
-import 'package:pokedex_sona/features/home/domain/entity/list_pokemon_entity.dart';
-import 'package:pokedex_sona/features/home/domain/repository/list_pokemon_repository.dart';
-import 'package:pokedex_sona/features/home/presentation/view_param/list_pokemon_view_param.dart';
+import 'package:pokedex_sona/features/detail/data/api/pokemon_detail_client.dart';
+import 'package:pokedex_sona/features/detail/domain/entity/pokemon_detail_entity.dart';
+import 'package:pokedex_sona/features/detail/domain/repository/pokemon_detail_repository.dart';
+import 'package:pokedex_sona/features/detail/presentation/view_param/pokemon_detail_view_param.dart';
 
-class ListPokemonRepositoryImpl extends ListPokemonRepository {
-  final ListPokemonClient listPokemonClient;
-  ListPokemonRepositoryImpl({required this.listPokemonClient});
+class PokemonDetailRepositoryImpl extends PokemonDetailRepository {
+  final PokemonDetailClient pokemonDetailClient;
+  PokemonDetailRepositoryImpl({required this.pokemonDetailClient});
 
   @override
-  Future<Result<List<ListPokemonViewParam>>> getListPokemon({
-    required int offset,
-    required int limit,
+  Future<Result<PokemonDetailViewParam>> getPokemonDetail({
+    required int id,
   }) async {
-    List<ListPokemonViewParam> listPokemon = [];
     try {
-      ListPokemonEntity entity = await listPokemonClient.getListPokemon(
-        offset: offset,
-        limit: limit,
+      PokemonDetailEntity entity = await pokemonDetailClient.getPokemonDetail(
+        id: id,
       );
-      if (entity.results != null) {
-        for (ListPokemonDataEntity entity in entity.results ?? []) {
-          listPokemon.add(ListPokemonViewParam.fromEntity(entity));
-        }
-      }
-      return Result.data(listPokemon);
+      return Result.data(PokemonDetailViewParam.fromEntity(entity));
     } on DioException catch (e) {
       return Result.error(e.response?.data['message'] ?? "Error");
     }

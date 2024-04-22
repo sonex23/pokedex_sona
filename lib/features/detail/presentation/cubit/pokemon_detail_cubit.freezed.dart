@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_pokemon_cubit.dart';
+part of 'pokemon_detail_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ListPokemonState {
+mixin _$PokemonDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ListPokemonViewParam> listPokemon) loaded,
+    required TResult Function(PokemonDetailViewParam pokemonDetail) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ListPokemonState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult? Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$ListPokemonState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,16 @@ mixin _$ListPokemonState {
 }
 
 /// @nodoc
-abstract class $ListPokemonStateCopyWith<$Res> {
-  factory $ListPokemonStateCopyWith(
-          ListPokemonState value, $Res Function(ListPokemonState) then) =
-      _$ListPokemonStateCopyWithImpl<$Res, ListPokemonState>;
+abstract class $PokemonDetailStateCopyWith<$Res> {
+  factory $PokemonDetailStateCopyWith(
+          PokemonDetailState value, $Res Function(PokemonDetailState) then) =
+      _$PokemonDetailStateCopyWithImpl<$Res, PokemonDetailState>;
 }
 
 /// @nodoc
-class _$ListPokemonStateCopyWithImpl<$Res, $Val extends ListPokemonState>
-    implements $ListPokemonStateCopyWith<$Res> {
-  _$ListPokemonStateCopyWithImpl(this._value, this._then);
+class _$PokemonDetailStateCopyWithImpl<$Res, $Val extends PokemonDetailState>
+    implements $PokemonDetailStateCopyWith<$Res> {
+  _$PokemonDetailStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$InitialStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialStateImplCopyWithImpl<$Res>
-    extends _$ListPokemonStateCopyWithImpl<$Res, _$InitialStateImpl>
+    extends _$PokemonDetailStateCopyWithImpl<$Res, _$InitialStateImpl>
     implements _$$InitialStateImplCopyWith<$Res> {
   __$$InitialStateImplCopyWithImpl(
       _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
@@ -109,7 +109,7 @@ class _$InitialStateImpl implements _InitialState {
 
   @override
   String toString() {
-    return 'ListPokemonState.initial()';
+    return 'PokemonDetailState.initial()';
   }
 
   @override
@@ -126,7 +126,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ListPokemonViewParam> listPokemon) loaded,
+    required TResult Function(PokemonDetailViewParam pokemonDetail) loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult? Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialStateImpl implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -196,7 +196,7 @@ class _$InitialStateImpl implements _InitialState {
   }
 }
 
-abstract class _InitialState implements ListPokemonState {
+abstract class _InitialState implements PokemonDetailState {
   const factory _InitialState() = _$InitialStateImpl;
 }
 
@@ -209,7 +209,7 @@ abstract class _$$LoadingStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateImplCopyWithImpl<$Res>
-    extends _$ListPokemonStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    extends _$PokemonDetailStateCopyWithImpl<$Res, _$LoadingStateImpl>
     implements _$$LoadingStateImplCopyWith<$Res> {
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
@@ -223,7 +223,7 @@ class _$LoadingStateImpl implements _LoadingState {
 
   @override
   String toString() {
-    return 'ListPokemonState.loading()';
+    return 'PokemonDetailState.loading()';
   }
 
   @override
@@ -240,7 +240,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ListPokemonViewParam> listPokemon) loaded,
+    required TResult Function(PokemonDetailViewParam pokemonDetail) loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult? Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingStateImpl implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -310,7 +310,7 @@ class _$LoadingStateImpl implements _LoadingState {
   }
 }
 
-abstract class _LoadingState implements ListPokemonState {
+abstract class _LoadingState implements PokemonDetailState {
   const factory _LoadingState() = _$LoadingStateImpl;
 }
 
@@ -320,12 +320,14 @@ abstract class _$$LoadedStateImplCopyWith<$Res> {
           _$LoadedStateImpl value, $Res Function(_$LoadedStateImpl) then) =
       __$$LoadedStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ListPokemonViewParam> listPokemon});
+  $Res call({PokemonDetailViewParam pokemonDetail});
+
+  $PokemonDetailViewParamCopyWith<$Res> get pokemonDetail;
 }
 
 /// @nodoc
 class __$$LoadedStateImplCopyWithImpl<$Res>
-    extends _$ListPokemonStateCopyWithImpl<$Res, _$LoadedStateImpl>
+    extends _$PokemonDetailStateCopyWithImpl<$Res, _$LoadedStateImpl>
     implements _$$LoadedStateImplCopyWith<$Res> {
   __$$LoadedStateImplCopyWithImpl(
       _$LoadedStateImpl _value, $Res Function(_$LoadedStateImpl) _then)
@@ -334,34 +336,36 @@ class __$$LoadedStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listPokemon = null,
+    Object? pokemonDetail = null,
   }) {
     return _then(_$LoadedStateImpl(
-      null == listPokemon
-          ? _value._listPokemon
-          : listPokemon // ignore: cast_nullable_to_non_nullable
-              as List<ListPokemonViewParam>,
+      null == pokemonDetail
+          ? _value.pokemonDetail
+          : pokemonDetail // ignore: cast_nullable_to_non_nullable
+              as PokemonDetailViewParam,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PokemonDetailViewParamCopyWith<$Res> get pokemonDetail {
+    return $PokemonDetailViewParamCopyWith<$Res>(_value.pokemonDetail, (value) {
+      return _then(_value.copyWith(pokemonDetail: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedStateImpl implements _LoadedState {
-  const _$LoadedStateImpl(final List<ListPokemonViewParam> listPokemon)
-      : _listPokemon = listPokemon;
+  const _$LoadedStateImpl(this.pokemonDetail);
 
-  final List<ListPokemonViewParam> _listPokemon;
   @override
-  List<ListPokemonViewParam> get listPokemon {
-    if (_listPokemon is EqualUnmodifiableListView) return _listPokemon;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listPokemon);
-  }
+  final PokemonDetailViewParam pokemonDetail;
 
   @override
   String toString() {
-    return 'ListPokemonState.loaded(listPokemon: $listPokemon)';
+    return 'PokemonDetailState.loaded(pokemonDetail: $pokemonDetail)';
   }
 
   @override
@@ -369,13 +373,12 @@ class _$LoadedStateImpl implements _LoadedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._listPokemon, _listPokemon));
+            (identical(other.pokemonDetail, pokemonDetail) ||
+                other.pokemonDetail == pokemonDetail));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_listPokemon));
+  int get hashCode => Object.hash(runtimeType, pokemonDetail);
 
   @JsonKey(ignore: true)
   @override
@@ -388,10 +391,10 @@ class _$LoadedStateImpl implements _LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ListPokemonViewParam> listPokemon) loaded,
+    required TResult Function(PokemonDetailViewParam pokemonDetail) loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(listPokemon);
+    return loaded(pokemonDetail);
   }
 
   @override
@@ -399,10 +402,10 @@ class _$LoadedStateImpl implements _LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult? Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(listPokemon);
+    return loaded?.call(pokemonDetail);
   }
 
   @override
@@ -410,12 +413,12 @@ class _$LoadedStateImpl implements _LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(listPokemon);
+      return loaded(pokemonDetail);
     }
     return orElse();
   }
@@ -458,11 +461,11 @@ class _$LoadedStateImpl implements _LoadedState {
   }
 }
 
-abstract class _LoadedState implements ListPokemonState {
-  const factory _LoadedState(final List<ListPokemonViewParam> listPokemon) =
+abstract class _LoadedState implements PokemonDetailState {
+  const factory _LoadedState(final PokemonDetailViewParam pokemonDetail) =
       _$LoadedStateImpl;
 
-  List<ListPokemonViewParam> get listPokemon;
+  PokemonDetailViewParam get pokemonDetail;
   @JsonKey(ignore: true)
   _$$LoadedStateImplCopyWith<_$LoadedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -479,7 +482,7 @@ abstract class _$$ErrorStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorStateImplCopyWithImpl<$Res>
-    extends _$ListPokemonStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    extends _$PokemonDetailStateCopyWithImpl<$Res, _$ErrorStateImpl>
     implements _$$ErrorStateImplCopyWith<$Res> {
   __$$ErrorStateImplCopyWithImpl(
       _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
@@ -509,7 +512,7 @@ class _$ErrorStateImpl implements _ErrorState {
 
   @override
   String toString() {
-    return 'ListPokemonState.error(error: $error)';
+    return 'PokemonDetailState.error(error: $error)';
   }
 
   @override
@@ -534,7 +537,7 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ListPokemonViewParam> listPokemon) loaded,
+    required TResult Function(PokemonDetailViewParam pokemonDetail) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -545,7 +548,7 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult? Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -556,7 +559,7 @@ class _$ErrorStateImpl implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ListPokemonViewParam> listPokemon)? loaded,
+    TResult Function(PokemonDetailViewParam pokemonDetail)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -604,7 +607,7 @@ class _$ErrorStateImpl implements _ErrorState {
   }
 }
 
-abstract class _ErrorState implements ListPokemonState {
+abstract class _ErrorState implements PokemonDetailState {
   const factory _ErrorState(final String error) = _$ErrorStateImpl;
 
   String get error;

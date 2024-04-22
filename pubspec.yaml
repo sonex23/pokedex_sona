@@ -41,7 +41,7 @@ dependencies:
   get_it: ^7.6.7
   go_router: null
   google_fonts: ^6.1.0
-  intl: ^0.18.0
+  intl: ^0.19.0
   json_annotation: ^4.8.1
   local_auth: ^2.2.0
   logger: ^2.0.2+1

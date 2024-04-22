@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_pokemon_client.dart';
+part of 'pokemon_detail_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'list_pokemon_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _ListPokemonClient implements ListPokemonClient {
-  _ListPokemonClient(
+class _PokemonDetailClient implements PokemonDetailClient {
+  _PokemonDetailClient(
     this._dio, {
     this.baseUrl,
   });
@@ -19,26 +19,20 @@ class _ListPokemonClient implements ListPokemonClient {
   String? baseUrl;
 
   @override
-  Future<ListPokemonEntity> getListPokemon({
-    required int offset,
-    required int limit,
-  }) async {
+  Future<PokemonDetailEntity> getPokemonDetail({required int id}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'offset': offset,
-      r'limit': limit,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ListPokemonEntity>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<PokemonDetailEntity>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/pokemon',
+              '/pokemon/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -47,7 +41,7 @@ class _ListPokemonClient implements ListPokemonClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ListPokemonEntity.fromJson(_result.data!);
+    final value = PokemonDetailEntity.fromJson(_result.data!);
     return value;
   }
 
