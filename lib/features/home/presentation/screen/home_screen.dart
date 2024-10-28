@@ -416,7 +416,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 16,
           ),
           const Text(
-            'Pokédex',
+            'Pokédex Sona',
             style: TextStyle(
               color: Palette.white,
               fontWeight: FontWeight.w700,
